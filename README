@@ -1,0 +1,24 @@
+WARNING: This project is very much in a alpha state and likely requires large changes to the SQL before it could work in your specific school environment.
+
+Pre-reqs:
+    - Python 3
+    - ODBC access to your PowerSchool server, this has to be requested from PowerSchool support if you are cloud hosted
+    - cx_Oracle Python module installed and running to connect to PowerSchool's Oracle DB, https://towardsdatascience.com/connecting-python-to-oracle-sql-server-mysql-and-postgresql-ea1e4523b1e9
+        - The batch script assumes that you will install it into a VENV, make sure to change the script it for are just installing for the entire system
+    - GAM Installed and Authorised for the domain on the machine running this script
+    - edit settings-template.py and save as settings.py
+    - PowerSchool Database Extension to hold room calendar lookups
+        - Required as is, but can be disabled in settings and by editing user_list.sql
+        - Input template, https://docs.google.com/spreadsheets/d/19xL5ks42g8nvmmhf2D871w4aQ4M8aUFcXROof82YH1M/edit#gid=0
+        - The SQL references U_ROOM_CALENDARS_GOOGLE, but it can be named anything as long as you edi the SQL
+    - Edit all of the sql files to fit your requirements
+Optional:
+    - edit exclusions-template.py and save as exclusions.py to not sync specific classes
+
+Future improvements planned:
+    - Change SQL to SQL within a PowerQueries to avoid using cx_Oracle and ODBC access
+    - Change GAM to Google API to avoid need to grant all of GAM's permissions and make the project easier to deploy
+    - Change SQL to be less school specific
+    - Move Calendar Event naming logic outside of the SQL and into a configuration file
+    - Performance improvements
+
