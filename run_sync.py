@@ -45,7 +45,7 @@ def run_sync():
 def update_calendar_for_email(email, user_type, days_before_to_sync, days_after_to_sync):
     # Get a list of all events for this user within the date range
     if user_type == 'teacher':
-        data_source_events = get_sql_results("teacher_events.sql", {":user_email": email, ":days_after_to_sync": days_after_to_sync})
+        data_source_events = get_sql_results("teacher_events.sql", {":user_email": email, ":days_before_to_sync": days_before_to_sync, "days_after_to_sync": days_after_to_sync})
     elif user_type == 'student':
         data_source_events = get_sql_results("student_events.sql", {":user_email": email, ":days_after_to_sync": days_after_to_sync})
     elif user_type == 'room':
